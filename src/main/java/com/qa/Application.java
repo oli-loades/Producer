@@ -5,7 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+import com.qa.business.service.BookService;
+import com.qa.persistence.repository.BookRepository;
 import com.qa.sender.Sender;
+import com.qa.util.JSONUtility;
 
 @SpringBootApplication
 public class Application {
@@ -18,6 +21,16 @@ public class Application {
 	@Bean
 	Sender sender() {
 		return new Sender();
+	}
+
+	@Bean
+	BookService bookService() {
+		return new BookService();
+	}
+
+	@Bean
+	JSONUtility util() {
+		return new JSONUtility();
 	}
 
 	public static void main(String args[]) {

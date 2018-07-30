@@ -2,10 +2,13 @@ package com.qa.persistence.domain;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 @Document(indexName = "index", type = "book")
 public class Book {
+	@Id
+	private int id;
 	private String name;
 	private List<String> author;
 	private String descripton;
@@ -14,7 +17,7 @@ public class Book {
 	
 	
 	
-	public Book(String name, List<String> author, String descripton, int rating, String linkToBook) {
+	public Book( String name, List<String> author, String descripton, int rating, String linkToBook) {
 		this.name = name;
 		this.author = author;
 		this.descripton = descripton;
@@ -84,6 +87,14 @@ public class Book {
 
 	public void setLinkToBook(String linkToBook) {
 		this.linkToBook = linkToBook;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
