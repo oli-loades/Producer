@@ -34,15 +34,14 @@ public class BookService {
 		String result;
 
 		if (bookList.isEmpty()) {
-
 			Book[] booksArray = restTemplate.getForObject(BookConstants.API_ADDRESS + name, Book[].class);
+			
 			for (Book b : booksArray) {
-				System.out.println(b.getName());
 				b.setId(getUniqueId());
 				bookRepository.save(b);
 				bookList.add(b);
 			}
-			System.out.println(getUniqueId());
+
 			result = util.getJSONForObject(bookList);
 
 		} else {
