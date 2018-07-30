@@ -1,6 +1,7 @@
 package com.qa.business.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
@@ -23,7 +24,7 @@ public class BookService {
 	
 	public String getBooks(String name) {
 		List<Book> books = (List<Book>) bookRepository.findAll();
-		books.stream().filter(b -> b.getName().contains(name));
+		books = books.stream().filter(b -> b.getName().contains(name)).collect(Collectors.toList());
 		String result ;
 		if(books.isEmpty()) {
 		 result = restTemplate.getForObject(BookConstants.API_ADDRESS, String.class);
