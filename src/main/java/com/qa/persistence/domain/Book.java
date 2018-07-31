@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "index", type = "book")
+@Document(indexName = "book_index", type = "book")
 public class Book {
 	@Id
 	private int id;

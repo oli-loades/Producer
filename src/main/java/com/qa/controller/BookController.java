@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.business.service.BookService;
 
-//@RequestMapping("/book")
+@RequestMapping("/book")
 @RestController
 public class BookController {
 	
 	@Autowired
 	public BookService bookService;
 
-	@RequestMapping("book/search/{name}")
+	@GetMapping("/search/{name}")
 	@ResponseBody
 	public String searchBooks(@PathVariable("name") String name) {
 		return bookService.getBooks(name);
