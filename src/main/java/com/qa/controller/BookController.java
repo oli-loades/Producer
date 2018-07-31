@@ -20,6 +20,5 @@ public class BookController {
 	@ResponseBody
 	public String searchBooks(@PathVariable("name") String name) {
 		return bookService.getBooks(name);
-		//return "java book";
 	}
 }
