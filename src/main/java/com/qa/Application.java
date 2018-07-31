@@ -5,8 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+
 import com.qa.business.service.BookService;
 import com.qa.persistence.repository.BookRepository;
+import com.qa.business.service.GlossaryService;
+
 import com.qa.sender.Sender;
 import com.qa.util.JSONUtility;
 
@@ -21,6 +24,11 @@ public class Application {
 	@Bean
 	Sender sender() {
 		return new Sender();
+	}
+	
+	@Bean
+	GlossaryService glossaryService() {
+		return new GlossaryService();
 	}
 
 	@Bean
