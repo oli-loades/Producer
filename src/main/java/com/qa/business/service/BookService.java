@@ -29,9 +29,6 @@ public class BookService {
 
 		if (bookList.isEmpty()) {
 
-			// Book[] booksArray = restTemplate.getForObject(BookConstants.API_ADDRESS +
-			// name, Book[].class);
-
 			try {
 				bookList = BookSearch.search(name);
 
@@ -39,7 +36,6 @@ public class BookService {
 					b.setId(getUniqueId());
 					bookRepository.save(b);
 					result = util.getJSONForObject(bookList);
-					// bookList.add(b);
 				}
 
 			} catch (Exception e) {
