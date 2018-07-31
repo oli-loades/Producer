@@ -18,7 +18,7 @@ public class GlossaryController {
 	@Autowired
 	private GlossaryService glossaryService;
 	
-	@GetMapping("/getDefinition/{keyword}")
+	@GetMapping("/get/{keyword}")
 	public String getDefinition(@PathVariable String keyword) {
 		return glossaryService.getDefiniton(keyword);
 	}

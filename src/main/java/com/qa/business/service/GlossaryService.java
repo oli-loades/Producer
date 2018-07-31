@@ -3,8 +3,10 @@ package com.qa.business.service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.client.RestTemplate;
 
 import com.qa.constants.GlossaryConstants;
@@ -31,11 +33,21 @@ public class GlossaryService {
 	}
 	
 	public List<GlossaryEntry> getAll(){
-		List<GlossaryEntry> ge = (List<GlossaryEntry>) glossaryRepository.findAll();
+		Page<GlossaryEntry> glossaryPage = (Page<GlossaryEntry>) glossaryRepository.findAll();
+		List<GlossaryEntry> ge = glossaryPage.getContent();
 		if(ge.isEmpty()) {
+			System.out.println(GlossaryConstants.API_GET_ALL_ADDRESS);
 			GlossaryEntry[] geArray = restTemplate.getForObject(GlossaryConstants.API_GET_ALL_ADDRESS, GlossaryEntry[].class);
 			ge = Arrays.asList(geArray);
+			for(GlossaryEntry g: ge) {
+				g.setId(getUniqueId());
+				glossaryRepository.save(g);
+			}
 		}
 		return ge;
 	}
+	
+	private int getUniqueId() {
+		return (int) StreamSupport.stream(glossaryRepository.findAll().spliterator(), false).count() + 1;
+}
 }
