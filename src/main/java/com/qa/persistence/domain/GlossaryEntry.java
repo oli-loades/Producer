@@ -3,7 +3,7 @@ package com.qa.persistence.domain;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "index", type = "glossary")
+@Document(indexName = "glossary_index", type = "glossary")
 public class GlossaryEntry {
 	@Id
 	private int id;
