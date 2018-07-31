@@ -1,8 +1,8 @@
 package com.qa.constants;
 
 public interface GlossaryConstants {
-	static final String HOST = "e.g. localhost";
-	static final String PORT = "e.g :8090";
+	static final String HOST = "http://localhost";
+	static final String PORT = ":8090";
 	static final String API_GET_PATH = "/get-definition/";
 	static final String API_GET_ALL_PATH = "/get-all-definitionS/";
 	static final String ROOT = "/dictionary";
