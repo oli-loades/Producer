@@ -24,7 +24,7 @@ public class BookService {
 
 	public String getBooks(String name) {
 		Page<Book> books = (Page<Book>) bookRepository.findAll();
-		List<Book> bookList = books.filter(b -> !b.getName().contains(name)).stream().collect(Collectors.toList());
+		List<Book> bookList = books.filter(b -> b.getName().contains(name)).stream().collect(Collectors.toList());
 		String result = "";
 
 		if (bookList.isEmpty()) {
