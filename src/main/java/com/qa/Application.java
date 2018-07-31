@@ -1,13 +1,13 @@
 package com.qa;
 
 import org.springframework.boot.SpringApplication;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 
 import com.qa.business.service.BookService;
-import com.qa.persistence.repository.BookRepository;
 import com.qa.business.service.GlossaryService;
 
 import com.qa.sender.Sender;

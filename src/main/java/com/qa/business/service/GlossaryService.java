@@ -14,40 +14,53 @@ import com.qa.persistence.domain.GlossaryEntry;
 import com.qa.persistence.repository.GlossaryRepository;
 
 public class GlossaryService {
-	
-	@Autowired 
+
+	@Autowired
 	private GlossaryRepository glossaryRepository;
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	public String getDefiniton(String keyword) {
 		Optional<GlossaryEntry> ge = glossaryRepository.findByKeyword(keyword);
 		String def;
-		if(ge.isPresent()) {
+
+		if (ge.isPresent()) {
+
 			def = ge.get().getDefinition();
-		}else {
-			def = restTemplate.getForObject(GlossaryConstants.API_GET_ADDRESS+keyword, String.class);
+
+		} else {
+
+			def = restTemplate.getForObject(GlossaryConstants.API_GET_ADDRESS + keyword, String.class);
+
 		}
+
 		return def;
+
 	}
-	
-	public List<GlossaryEntry> getAll(){
+
+	public List<GlossaryEntry> getAll() {
 		Page<GlossaryEntry> glossaryPage = (Page<GlossaryEntry>) glossaryRepository.findAll();
 		List<GlossaryEntry> ge = glossaryPage.getContent();
-		if(ge.isEmpty()) {
-			System.out.println(GlossaryConstants.API_GET_ALL_ADDRESS);
-			GlossaryEntry[] geArray = restTemplate.getForObject(GlossaryConstants.API_GET_ALL_ADDRESS, GlossaryEntry[].class);
+
+		if (ge.isEmpty()) {
+
+			GlossaryEntry[] geArray = restTemplate.getForObject(GlossaryConstants.API_GET_ALL_ADDRESS,
+					GlossaryEntry[].class);
 			ge = Arrays.asList(geArray);
-			for(GlossaryEntry g: ge) {
+
+			for (GlossaryEntry g : ge) {
 				g.setId(getUniqueId());
 				glossaryRepository.save(g);
 			}
+
 		}
+
 		return ge;
+
 	}
-	
+
 	private int getUniqueId() {
 		return (int) StreamSupport.stream(glossaryRepository.findAll().spliterator(), false).count() + 1;
-}
+	}
 }
