@@ -6,6 +6,6 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
 import com.qa.persistence.domain.GlossaryEntry;
 
-public interface GlossaryRepository extends ElasticsearchRepository<GlossaryEntry, Integer>{
-Optional<GlossaryEntry> findByKeyword(String keyword);
+public interface GlossaryRepository extends ElasticsearchRepository<GlossaryEntry, Integer> {
+	Optional<GlossaryEntry> findByKeyword(String keyword);
 }
