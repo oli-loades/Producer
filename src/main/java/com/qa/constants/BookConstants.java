@@ -7,4 +7,5 @@ public interface BookConstants {
 	static final String API_PATH = "/search/";
 	static final String API_ADDRESS = HOST + PORT + ROOT + API_PATH;
 	static final String API_KEY = "AIzaSyBeFiygkoMJAtGVtXv-G5jP1KIyUYPqhew";
+	static final String REQUEST_MSG = "Request for Google Books API";
 }

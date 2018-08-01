@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import com.qa.constants.GlossaryConstants;
 import com.qa.persistence.domain.GlossaryEntry;
 import com.qa.persistence.repository.GlossaryRepository;
+import com.qa.sender.Sender;
 
 public class GlossaryService {
 
@@ -20,6 +21,9 @@ public class GlossaryService {
 
 	@Autowired
 	private RestTemplate restTemplate;
+
+	@Autowired
+	private Sender sender;
 
 	public String getDefiniton(String keyword) {
 		Optional<GlossaryEntry> ge = glossaryRepository.findByKeyword(keyword);
@@ -34,7 +38,7 @@ public class GlossaryService {
 			def = restTemplate.getForObject(GlossaryConstants.API_GET_ADDRESS + keyword, String.class);
 
 		}
-
+		sender.send(GlossaryConstants.REQUEST_MSG);
 		return def;
 
 	}
@@ -55,7 +59,7 @@ public class GlossaryService {
 			}
 
 		}
-
+		sender.send(GlossaryConstants.REQUEST_MSG);
 		return ge;
 
 	}
@@ -63,4 +67,5 @@ public class GlossaryService {
 	private int getUniqueId() {
 		return (int) StreamSupport.stream(glossaryRepository.findAll().spliterator(), false).count() + 1;
 	}
+
 }

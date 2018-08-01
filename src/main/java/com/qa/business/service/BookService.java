@@ -3,15 +3,17 @@ package com.qa.business.service;
 
 import java.util.List;
 
+
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.client.RestTemplate;
 
+import com.qa.constants.BookConstants;
 import com.qa.persistence.domain.Book;
 import com.qa.persistence.repository.BookRepository;
+import com.qa.sender.Sender;
 import com.qa.util.JSONUtility;
 
 public class BookService {
@@ -21,6 +23,9 @@ public class BookService {
 
 	@Autowired
 	private JSONUtility util;
+	
+	@Autowired
+	private Sender sender;
 
 	public String getBooks(String name) {
 		Page<Book> books = (Page<Book>) bookRepository.findAll();
@@ -45,6 +50,7 @@ public class BookService {
 		} else {
 			result = util.getJSONForObject(bookList);
 		}
+		sender.send(BookConstants.REQUEST_MSG);
 		return result;
 	}
 
