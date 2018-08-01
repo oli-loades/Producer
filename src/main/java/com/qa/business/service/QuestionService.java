@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import com.qa.constants.QuestionConstants;
 import com.qa.persistence.domain.Question;
 import com.qa.persistence.repository.QuestionRepository;
+import com.qa.sender.Sender;
 
 public class QuestionService {
 	@Autowired
@@ -17,6 +18,9 @@ public class QuestionService {
 
 	@Autowired
 	private RestTemplate restTemplate;
+
+	@Autowired
+	private Sender sender;
 
 	public List<Question> getAll() {
 		Page<Question> questions = (Page<Question>) questionRepository.findAll();
@@ -28,9 +32,9 @@ public class QuestionService {
 			questionList = Arrays.asList(questionArray);
 
 			questionRepository.saveAll(questionList);
-		} else {
-
 		}
+		sender.send(QuestionConstants.REQUEST_MSG);
+
 		return questionList;
 	}
 

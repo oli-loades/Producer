@@ -6,4 +6,5 @@ public interface QuestionConstants {
 	static final String API_GET_ALL_PATH = "/getAll/";
 	static final String ROOT = "/question";
 	static final String API_GET_ALL_ADDRESS = HOST + PORT + ROOT + API_GET_ALL_PATH;
+	static final String REQUEST_MSG = "Request for Question API";
 }

@@ -11,13 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class rabbitConfiguration {
 
 	@Bean
-	Queue putQueue() {
-		return new Queue(com.qa.constants.RabbitConstants.PUT_QUEUE_NAME, false);
-	}
-
-	@Bean
-	Queue postQueue() {
-		return new Queue(com.qa.constants.RabbitConstants.POST_QUEUE_NAME, false);
+	Queue Queue() {
+		return new Queue(com.qa.constants.RabbitConstants.QUEUE_NAME, false);
 	}
 
 	@Bean
@@ -26,12 +21,8 @@ public class rabbitConfiguration {
 	}
 
 	@Bean
-	Binding putBinding(Queue putQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(putQueue).to(exchange).with("put");
+	Binding Binding(Queue putQueue, TopicExchange exchange) {
+		return BindingBuilder.bind(putQueue).to(exchange).with("request");
 	}
 
-	@Bean
-	Binding postBinding(Queue postQueue, TopicExchange exchange) {
-		return BindingBuilder.bind(postQueue).to(exchange).with("post");
-	}
 }
