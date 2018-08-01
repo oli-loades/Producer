@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.qa.business.service.BookService;
 import com.qa.business.service.GlossaryService;
-
+import com.qa.business.service.QuestionService;
 import com.qa.sender.Sender;
 import com.qa.util.JSONUtility;
 
@@ -34,6 +34,11 @@ public class Application {
 	@Bean
 	BookService bookService() {
 		return new BookService();
+	}
+	
+	@Bean
+	QuestionService questionService() {
+		return new QuestionService();
 	}
 
 	@Bean
