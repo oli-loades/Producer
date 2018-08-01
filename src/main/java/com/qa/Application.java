@@ -21,31 +21,6 @@ public class Application {
 		return new RestTemplate();
 	}
 
-	@Bean
-	Sender sender() {
-		return new Sender();
-	}
-	
-	@Bean
-	GlossaryService glossaryService() {
-		return new GlossaryService();
-	}
-
-	@Bean
-	BookService bookService() {
-		return new BookService();
-	}
-	
-	@Bean
-	QuestionService questionService() {
-		return new QuestionService();
-	}
-
-	@Bean
-	JSONUtility util() {
-		return new JSONUtility();
-	}
-
 	public static void main(String args[]) {
 		SpringApplication.run(Application.class);
 	}

@@ -7,6 +7,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.qa.constants.GlossaryConstants;
@@ -14,6 +15,7 @@ import com.qa.persistence.domain.GlossaryEntry;
 import com.qa.persistence.repository.GlossaryRepository;
 import com.qa.sender.Sender;
 
+@Component
 public class GlossaryService {
 
 	@Autowired

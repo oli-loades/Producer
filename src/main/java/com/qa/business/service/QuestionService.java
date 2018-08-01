@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import com.qa.constants.QuestionConstants;
@@ -12,6 +13,7 @@ import com.qa.persistence.domain.Question;
 import com.qa.persistence.repository.QuestionRepository;
 import com.qa.sender.Sender;
 
+@Component
 public class QuestionService {
 	@Autowired
 	private QuestionRepository questionRepository;

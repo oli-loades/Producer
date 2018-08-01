@@ -9,6 +9,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 
 import com.qa.constants.BookConstants;
 import com.qa.persistence.domain.Book;
@@ -16,6 +17,7 @@ import com.qa.persistence.repository.BookRepository;
 import com.qa.sender.Sender;
 import com.qa.util.JSONUtility;
 
+@Component
 public class BookService {
 
 	@Autowired
