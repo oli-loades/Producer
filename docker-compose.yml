@@ -8,7 +8,4 @@ links: "-producer"
 ports: 
   - "9200:9200"
   - "9300:9300"
-producer: ~
-services: ~
-version: "3"
 volumes: "./elasticsearch/data:/usr/share/elasticsearch/data"
