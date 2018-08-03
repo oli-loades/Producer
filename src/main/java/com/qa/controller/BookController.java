@@ -23,4 +23,12 @@ public class BookController {
 	public String searchBooks(@PathVariable("name") String name) {
 		return bookService.getBooks(name);
 	}
+
+	public BookService getBookService() {
+		return bookService;
+	}
+
+	public void setBookService(BookService service) {
+		this.bookService = service;
+	}
 }

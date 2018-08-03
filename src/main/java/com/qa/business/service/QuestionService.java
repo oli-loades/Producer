@@ -15,6 +15,14 @@ import com.qa.sender.Sender;
 
 @Component
 public class QuestionService {
+	public QuestionRepository getQuestionRepository() {
+		return questionRepository;
+	}
+
+	public void setQuestionRepository(QuestionRepository questionRepository) {
+		this.questionRepository = questionRepository;
+	}
+
 	@Autowired
 	private QuestionRepository questionRepository;
 

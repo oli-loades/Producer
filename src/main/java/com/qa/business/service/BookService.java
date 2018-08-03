@@ -25,7 +25,8 @@ public class BookService {
 
 	@Autowired
 	private JSONUtility util;
-	
+
+
 	@Autowired
 	private Sender sender;
 
@@ -58,5 +59,13 @@ public class BookService {
 
 	private int getUniqueId() {
 		return (int) StreamSupport.stream(bookRepository.findAll().spliterator(), false).count() + 1;
+	}
+	
+	public BookRepository getBookRepository() {
+		return bookRepository;
+	}
+
+	public void setBookRepository(BookRepository bookRepository) {
+		this.bookRepository = bookRepository;
 	}
 }

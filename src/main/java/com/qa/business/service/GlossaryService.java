@@ -70,4 +70,12 @@ public class GlossaryService {
 		return (int) StreamSupport.stream(glossaryRepository.findAll().spliterator(), false).count() + 1;
 	}
 
+	public GlossaryRepository getGlossaryRepository() {
+		return glossaryRepository;
+	}
+
+	public void setGlossaryRepository(GlossaryRepository glossaryRepository) {
+		this.glossaryRepository = glossaryRepository;
+	}
+
 }

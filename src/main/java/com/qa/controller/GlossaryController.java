@@ -30,4 +30,12 @@ public class GlossaryController {
 	public List<GlossaryEntry> getAll() {
 		return glossaryService.getAll();
 	}
+
+	public GlossaryService getGlossaryService() {
+		return glossaryService;
+	}
+
+	public void setGlossaryService(GlossaryService glossaryService) {
+		this.glossaryService = glossaryService;
+	}
 }

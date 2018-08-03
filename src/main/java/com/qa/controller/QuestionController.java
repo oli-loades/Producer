@@ -22,4 +22,12 @@ public class QuestionController {
 	 public List<Question> getAll(){
 		 return questionService.getAll();
 	 }
+
+	public QuestionService getQuestionService() {
+		return questionService;
+	}
+
+	public void setQuestionService(QuestionService questionService) {
+		this.questionService = questionService;
+	}
 }
